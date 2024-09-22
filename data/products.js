@@ -1,12 +1,12 @@
 const images = {
-  iPhone14Pro: '../images/products/iPhone 14 Pro.jpg',
-  samsungGalaxyS23Ultra: '../images/products/Samsung Galaxy S23 Ultra.jpg',
-  googlePixel8: '../images/products/Google Pixel 8.jpg',
-  onePlus11Pro: '../images/products/OnePlus 11 Pro.jpg',
-  macBookPro16: '../images/products/MacBook Pro 16.jpg',
-  dellXPS13: '../images/products/Dell XPS 13.jpg',
-  hpSpectreX360: '../images/products/HP Spectre x360.jpg',
-  asusROG: '../images/products/Asus ROG Zephyrus G14.jpg',
+  iPhone14Pro: '../images/products/iPhone_14_Pro.jpg',
+  samsungGalaxyS23Ultra: '../images/products/Samsung_Galaxy_S23_Ultra.jpg',
+  googlePixel8: '../images/products/Google_Pixel_8.jpg',
+  onePlus11Pro: '../images/products/OnePlus_11_Pro.jpg',
+  macBookPro16: '../images/products/MacBook_Pro_16.jpg',
+  dellXPS13: '../images/products/Dell_XPS_13.jpg',
+  hpSpectreX360: '../images/products/HP_Spectre_x360.jpg',
+  asusROG: '../images/products/Asus_ROG_Zephyrus_G14.jpg',
 };
 
 export const products = [
