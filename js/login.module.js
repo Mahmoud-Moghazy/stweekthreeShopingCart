@@ -1,10 +1,15 @@
 import { showNotification } from "./notification.module.js";
 
 // Load user from localStorage, or initialize a user object
-export const user = JSON.parse(localStorage.getItem('user')) || { loggedIn: false, loggedInCount: 0, welcome: false };
+export const user = JSON.parse(localStorage.getItem("user")) || {
+  loggedIn: false,
+  loggedInCount: 0,
+  welcome: false,
+};
 
 // Save user to localStorage
-export const saveUser = () => localStorage.setItem('user', JSON.stringify(user));
+export const saveUser = () =>
+  localStorage.setItem("user", JSON.stringify(user));
 
 export const loginPage = () => {
   const layout = `
@@ -47,7 +52,7 @@ export const loginPage = () => {
       </div>
     </div>
   `;
-  document.getElementsByTagName('section')[0].innerHTML = layout;
+  document.getElementsByTagName("section")[0].innerHTML = layout;
 };
 
 // Email validation regex function
@@ -56,29 +61,33 @@ const validateEmail = (email) => {
   return emailPattern.test(email);
 };
 
-const userName = user?.email.split('@')[0];
-const welcomeMessage = `${user.loggedInCount == 1 ? 'Welcome' : 'Welcome back'} ${userName}`;
-if (!user.welcome && user.loggedIn) {
-  showNotification(welcomeMessage);
-  user.welcome = true;
-  saveUser();
+if (user.email) {
+  const userName = user?.email.split("@")[0];
+  const welcomeMessage = `${
+    user.loggedInCount == 1 ? "Welcome" : "Welcome back"
+  } ${userName}`;
+  if (!user.welcome && user.loggedIn) {
+    showNotification(welcomeMessage);
+    user.welcome = true;
+    saveUser();
+  }
 }
 
 if (!user.loggedIn) {
   loginPage();
-  const emailInput = document.getElementById('floatingInput');
-  const passwordInput = document.getElementById('floatingPassword');
-  const loginButton = document.getElementById('loginBtn');
+  const emailInput = document.getElementById("floatingInput");
+  const passwordInput = document.getElementById("floatingPassword");
+  const loginButton = document.getElementById("loginBtn");
 
   // Function to validate email input and toggle 'is-invalid' class
   const validateEmailInput = () => {
     const emailValue = emailInput.value.trim();
 
     if (validateEmail(emailValue)) {
-      emailInput.classList.remove('is-invalid');
+      emailInput.classList.remove("is-invalid");
       return true;
     } else {
-      emailInput.classList.add('is-invalid');
+      emailInput.classList.add("is-invalid");
       return false;
     }
   };
@@ -88,10 +97,10 @@ if (!user.loggedIn) {
     const passwordValue = passwordInput.value.trim();
 
     if (passwordValue.length <= 5) {
-      passwordInput.classList.add('is-invalid');
+      passwordInput.classList.add("is-invalid");
       return false;
     } else {
-      passwordInput.classList.remove('is-invalid');
+      passwordInput.classList.remove("is-invalid");
       return true;
     }
   };
@@ -117,14 +126,14 @@ if (!user.loggedIn) {
       // Show invalid feedback if validation fails
       validateEmailInput();
       validatePasswordInput();
-      showNotification('Please provide a valid data', 'danger');
+      showNotification("Please provide a valid data", "danger");
     }
   };
 
   // Attach event listeners for email and password validation
-  emailInput.addEventListener('blur', validateEmailInput);
-  passwordInput.addEventListener('blur', validatePasswordInput);
+  emailInput.addEventListener("blur", validateEmailInput);
+  passwordInput.addEventListener("blur", validatePasswordInput);
 
   // Attach click event listener to login button
-  loginButton.addEventListener('click', handleLogin);
+  loginButton.addEventListener("click", handleLogin);
 }
