@@ -29,9 +29,10 @@ body {
   color: var(--color-davysGray);
 }
 
-.is-invalid ~ .invalid-feedback {
+/* .invalid-feedback {
   display: block;
-}
+  color: red;
+} */
 
 .card-text,
 .count,
