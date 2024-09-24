@@ -53,7 +53,9 @@ export class Home {
     logoutBtn.addEventListener("click", () => {
       this.account.logout();
       this.account.saveToLocalStorage();
-      new Login();
+      setTimeout(() => {
+        document.location.reload();
+      }, 1500);      
     });
   }
 
